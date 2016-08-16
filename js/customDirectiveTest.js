@@ -1,28 +1,38 @@
-//initialize the app
+// Initialize the app
 var tweetApp = angular.module('tweetApp', ['ngRoute']);
 
-tweetApp.directive('customMenu', function(){
+tweetApp.directive('tweetHello', function(){
 	return {
-		restrict: 'E', // E = element; A = attribute; C = class; M = comment
-		templateUrl: "views/menu.html"
+		restrict: 'E', //E = Element, A = attribute, C = Class, M = Comment
+		template: "Hello, Class!"
 	}
 });
 
-tweetApp.config(function($routeProvider){
-	// at /trump, load the home.html template, but new controller
-	$routeProvider.when('/', {
-		templateUrl: 'views/home.html',
-		controller: 'homeController'
-	});
-	// at /trump, load the same template, but new controller
-	$routeProvider.when('/trump', {
-		templateUrl: 'views/home.html',
-		controller: 'trumpController'
-	});
-	// at /hillary, load the same template, but new controller
-	$routeProvider.when('/hillary', {
-		templateUrl: 'views/home.html',
-		controller: 'hillaryController'
-	});
-	$routeProvider.otherwise('/'); // default
+tweetApp.directive('helloAttr', function(){
+	return {
+		restrict: 'A', //E = Element, A = attribute, C = Class, M = Comment
+		// template: "<li>Hello, Class from an attibute!</li><li>{{test}}</li>",
+		templateUrl: "views/hello.html"
+	}
+});
+
+tweetApp.directive('helloClass', function(){
+	return {
+		restrict: 'C', //E = Element, A = attribute, C = Class, M = Comment
+		template: "Hello, Class from another type of class!"
+	}
+});
+
+tweetApp.directive('turnMeBlue', function(){
+	return {
+		link: function($scope, element, attrs){
+			element.bind('mouseenter', function(){
+				element.css('color', $scope.myColor);
+				console.log(element);
+			});
+			element.bind('mouseleave', function(){
+				element.css('color', 'black');
+			});			
+		}
+	}
 });
