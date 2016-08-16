@@ -6,6 +6,30 @@
 		.active{
 			font-size: 50px;
 		}
+
+		img{
+			float: left;
+		}
+
+		/* .gen-tweet-container{
+			width: 50%;
+		} */
+
+		.trump-container, .hillary-container{
+			width: 45%;
+		}
+
+		.trump-container{
+			float: left;
+		}
+
+		.hillary-container{
+			float: right;
+		}
+
+		.tweet{
+			padding: 10px 0px 20px;
+		}
 	</style>
 
 	<title></title>
@@ -19,15 +43,43 @@
 	<script type="text/javascript" src="js/tweetModule.js"></script>
 	<script type="text/javascript" src="js/tweetController.js"></script>
 	<script type="text/javascript" src="js/homeController.js"></script>
-	<script type="text/javascript" src="js/trumpController.js"></script>
+	<!-- <script type="text/javascript" src="js/trumpController.js"></script> -->
 
 </head>
-<body ng-controller="tweetController">
+<body ng-controller="homeController">
 
-	<div class="" ng-repeat="tweet in tweets">
-		<img ng-src="{{tweet.img}}" />
-		<li>{{tweet.userName}}</li>
+	<!-- <form ng-submit="getTweets(searchText)">
+		<input type="text" ng-model="searchText" />
+		<button type="submit">Search</button>
+		<button type="button" ng-click="getTrumpTweets()">Trump</button>
+		<button type="button" ng-click="getHillaryTweets()">Hillary</button>
+	</form>
+
+	<div class="gen-tweet-container">
+		<div class="tweet" ng-repeat="tweet in searchTweets">
+			<img ng-src="{{tweet.user.profile_image_url}}" />
+			<p>{{tweet.user.name}} ({{tweet.user.screen_name}}) at {{tweet.created_at}}</p>
+			<p>{{tweet.text}}</p>
+		</div>
 	</div>
+
+	<div class="trump-container">
+		<div class="tweet" ng-repeat="tweet in trumpTweets">
+			<img ng-src="{{tweet.user.profile_image_url}}" />
+			<p>{{tweet.user.name}} ({{tweet.user.screen_name}}) at {{tweet.created_at}}</p>
+			<p>{{tweet.text}}</p>
+		</div>
+	</div>
+
+	<div class="hillary-container">
+		<div class="tweet" ng-repeat="tweet in hillaryTweets">
+			<img ng-src="{{tweet.user.profile_image_url}}" />
+			<p>{{tweet.user.name}} ({{tweet.user.screen_name}}) at {{tweet.created_at}}</p>
+			<p>{{tweet.text}}</p>
+		</div>
+	</div> -->
+
+	<div ng-view></div>
 
 </body>
 </html>
