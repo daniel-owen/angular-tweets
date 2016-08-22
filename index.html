@@ -2,84 +2,70 @@
 <html ng-app="tweetApp">
 <head>
 
-	<style type="text/css" media="screen">
-		.active{
-			font-size: 50px;
-		}
-
-		img{
-			float: left;
-		}
-
-		/* .gen-tweet-container{
-			width: 50%;
-		} */
-
-		.trump-container, .hillary-container{
-			width: 45%;
-		}
-
-		.trump-container{
-			float: left;
-		}
-
-		.hillary-container{
-			float: right;
-		}
-
-		.tweet{
-			padding: 10px 0px 20px;
-		}
-	</style>
-
 	<title></title>
 
+	<!-- include Angular Material style sheet -->
+  	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+	<!-- include angularJS -->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<!-- include ng-animate -->
 	<script type="text/javascript" src="https://code.angularjs.org/1.5.8/angular-animate.min.js"></script>
+	<!-- include ng-cookies -->
 	<script type="text/javascript" src="https://code.angularjs.org/1.5.8/angular-cookies.min.js"></script>
+	<!-- include ng-route -->
 	<script type="text/javascript" src="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
+	<!-- include aria to make material happy -->
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
+	<!-- include messages to make material happy -->
+  	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.min.js"></script>
+  	<!-- include Angular Material Library -->
+  	<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
 
-	<script type="text/javascript" src="js/tweets.js"></script>
+	<!-- include custom scripts -->
+	<!-- <script type="text/javascript" src="js/tweets.js"></script> -->
 	<script type="text/javascript" src="js/tweetModule.js"></script>
 	<script type="text/javascript" src="js/tweetController.js"></script>
 	<script type="text/javascript" src="js/homeController.js"></script>
 	<!-- <script type="text/javascript" src="js/trumpController.js"></script> -->
 
+	<style>
+		#menu ul{
+			clear: both;
+			margin-bottom: 20px;
+		}
+
+		#menu ul li{
+			float: left;
+			list-style-type: none;
+			margin-left: 20px;
+			font-size: 28px;
+		}
+
+		li a{
+			color: black;
+			text-decoration: none;
+		}
+
+		.active{
+			font-weight: bold;
+			color: red;
+		}
+	</style>
+
 </head>
-<body ng-controller="homeController">
+<body ng-controller="homeController" ng-init="showPrompt()">
 
-	<!-- <form ng-submit="getTweets(searchText)">
-		<input type="text" ng-model="searchText" />
-		<button type="submit">Search</button>
-		<button type="button" ng-click="getTrumpTweets()">Trump</button>
-		<button type="button" ng-click="getHillaryTweets()">Hillary</button>
-	</form>
-
-	<div class="gen-tweet-container">
-		<div class="tweet" ng-repeat="tweet in searchTweets">
-			<img ng-src="{{tweet.user.profile_image_url}}" />
-			<p>{{tweet.user.name}} ({{tweet.user.screen_name}}) at {{tweet.created_at}}</p>
-			<p>{{tweet.text}}</p>
+		<div id="menu">
+			<ul>
+				<li ng-class=home><a href="/">Home</a></li>
+				<li><a ng-class=trump href="#/trump">Trump</a></li>
+				<li><a ng-class=hillary href="#/hillary">Hillary</a></li>
+			</ul>
 		</div>
-	</div>
 
-	<div class="trump-container">
-		<div class="tweet" ng-repeat="tweet in trumpTweets">
-			<img ng-src="{{tweet.user.profile_image_url}}" />
-			<p>{{tweet.user.name}} ({{tweet.user.screen_name}}) at {{tweet.created_at}}</p>
-			<p>{{tweet.text}}</p>
-		</div>
-	</div>
+		<h1>{{status}}</h1>
 
-	<div class="hillary-container">
-		<div class="tweet" ng-repeat="tweet in hillaryTweets">
-			<img ng-src="{{tweet.user.profile_image_url}}" />
-			<p>{{tweet.user.name}} ({{tweet.user.screen_name}}) at {{tweet.created_at}}</p>
-			<p>{{tweet.text}}</p>
-		</div>
-	</div> -->
-
-	<div ng-view></div>
+		<div ng-view></div>
 
 </body>
 </html>
